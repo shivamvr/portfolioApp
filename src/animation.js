@@ -5,25 +5,23 @@ export const pageAnimation = {
     y: 0,
     transition: {
       duration: 1,
-    },
+      delayChildren: 1,
+      staggerChildren: 0.2,
+    }
   },
   exit: {
-    opacity: 0,
-    y: 300,
+    opacity: 0, y: 300,
     transition: {
       duration: 1,
-      when: 'beforeChildern',
-      staggerChildern: .3,
-      delayChildern: 2
-    },
-  },
-}
+    }
+  }
+};
 
 export const titleAnim = {
-  hidden: { opacity: 0, x: 200 },
+  hidden: { y: 20, opacity: 0 },
   show: {
+    y: 0,
     opacity: 1,
-    x: 0,
-    transition: { duration: 0.75, ease: 'easeOut' },
-  },
-}
+    transition: {duration: 1, ease:'easeOut'}
+  }
+};
