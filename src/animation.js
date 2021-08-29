@@ -23,7 +23,7 @@ export const titleAnim = {
     opacity: 1,
     transition: {
       delayChildren: 0.1,
-      duration: 1,
+      duration: .75,
       ease: 'easeOut',
       when: 'beforeChildren',
       staggerChildren: 0.3,
@@ -36,7 +36,7 @@ export const lineAnim = {
   show: {
     width: '100%',
     transition: {
-      delay: 1,
+      delay: .75,
       duration: 0.75,
       ease: 'easeOut',
     },
@@ -49,7 +49,7 @@ export const photoAnim = {
     scale: 1,
     opacity: 1,
     transition: {
-      delay: 1.5,
+      delay: 1.2,
       duration: 1,
       ease: 'easeOut',
     },
@@ -79,6 +79,6 @@ export const scrollReveal = {
   show: { opacity: 1, scale: 1, transition: { duration: 1, ease: 'easeOut' } },
 }
 export const fade = {
-  hidden: { opacity: 0, transition: { duration: 1 } },
-  show: { opacity: 1, transition: { duration: 1 } },
+  hidden: { opacity: 0, transition: { duration: .75 } },
+  show: { opacity: 1, transition: { duration:  .75} },
 }
