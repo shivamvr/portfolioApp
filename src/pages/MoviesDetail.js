@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
-import { MovieState } from '../../movieState'
-import { motion } from "framer-motion"
-import { pageAnimation } from '../../animation'
+import { MovieState } from '../movieState'
+import { motion } from 'framer-motion'
+import { pageAnimation } from '../animation'
+import ScrollTop from '../components/ScrollTop'
 
 function MoviesDetail() {
   const history = useHistory()
@@ -15,21 +16,31 @@ function MoviesDetail() {
     setMovie(currentMovie[0])
   }, [movies, url])
   return (
-    <motion.div variants={pageAnimation} initial='hidden' animate='show' exit='exit'>
+    <motion.div
+      variants={pageAnimation}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+    >
       {movie !== null && (
         <Detail>
           <Headline>
             <h2>{movie.title}</h2>
             <img src={movie.mainImg} alt="" />
             <Awards>
-              {movie.awards.map((award) => (
-                <Award description={award.description} title={award.title} />
+              {movie.awards.map((award, index) => (
+                <Award
+                  description={award.description}
+                  key={index}
+                  title={award.title}
+                />
               ))}
             </Awards>
-            <img className='secondaryImg' src={movie.secondaryImg} alt="" />
+            <img className="secondaryImg" src={movie.secondaryImg} alt="" />
           </Headline>
         </Detail>
       )}
+      <ScrollTop />
     </motion.div>
   )
 }
@@ -42,6 +53,10 @@ const Awards = styled.div`
   justify-content: space-around;
   background: pink;
   padding: 2rem 5rem;
+  @media (max-width: 1040px) {
+    flex-direction: column;
+    align-items: center;
+  }
 
   .line {
     width: 90%;
@@ -58,9 +73,13 @@ const Headline = styled.div`
     height: 85vh;
     object-fit: cover;
   }
-  .secondaryImg{
-      width: 100%;
-      height: 100vh;
+  .secondaryImg {
+    width: 100%;
+    height: 100vh;
+    padding-bottom: 3rem;
+    @media (max-width: 1070px) {
+      height: auto;
+    }
   }
   h2 {
     font-size: 160%;
@@ -73,6 +92,14 @@ const AwardStyled = styled.div`
   width: 30%;
   padding: 1rem;
   line-height: 1.5;
+  @media (max-width: 1040px) {
+    width: 70%;
+    margin-bottom: 2rem;
+    font-size: 120%;
+  }
+  @media (max-width: 650px) {
+    width: 80%;
+  }
 `
 const Award = ({ title, description }) => {
   return (

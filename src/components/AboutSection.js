@@ -1,13 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
 import home1 from '../img/home1.png'
+import Wave from './Wave'
 import { motion } from 'framer-motion'
-import { pageAnimation, titleAnim } from '../animation'
+import { titleAnim, photoAnim } from '../animation'
+
 function AboutSection() {
   return (
     <Container>
       <Title className="title">
-        <motion.div variants={pageAnimation} initial="hidden" animate="show">
+        <motion.div variants={titleAnim} initial="hidden" animate="show">
           <motion.div variants={titleAnim} className="hide">
             We work to make
           </motion.div>
@@ -29,7 +31,8 @@ function AboutSection() {
         </div>
       </Title>
       <div className="image">
-        <img src={home1} alt="" />
+        <motion.img variants={photoAnim} src={home1} alt="" />
+        <Wave />
       </div>
     </Container>
   )
@@ -38,17 +41,35 @@ const Container = styled.div`
   display: flex;
   border: red solid 5px;
   .image {
-    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35%;
     border: blue solid 5px;
+    overflow: hidden;
     img {
+      position: relative;
+      z-index: 2;
       width: 100%;
-      height: 94vh;
+      height: 80vh;
       object-fit: cover;
     }
   }
+  @media (max-width: 1070px){
+    flex-direction: column;
+    align-items: center;
+    font-size: 110%;
+    .image{
+      width: 90%;
+      height: 90vh;
+      img{
+        height: 100%;
+      }
+     }
+   }
 `
 const Title = styled.div`
-  /* padding-left: 1rem; */
+  z-index: 2;
   min-height: 94vh;
   width: 60%;
   display: flex;
@@ -56,6 +77,22 @@ const Title = styled.div`
   align-items: center;
   justify-content: center;
   border: green solid 5px;
+  @media (max-width: 1070px){
+    width: 90%;
+    &>div{
+      p{
+        font-size: 110%;
+      }
+      width: 80%;
+    }
+   }
+   @media (max-width: 600px){
+     &>div{
+       p{
+         font-size: 120%;
+       }
+     }
+   }
   & > div {
     border: purple solid 5px;
     width: 70%;

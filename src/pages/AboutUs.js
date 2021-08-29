@@ -1,13 +1,15 @@
 import React from 'react'
-import AboutSection from '../AboutSection'
-import ServicesSection from '../ServicesSection'
-import FaqSection from '../FaqSection'
+import AboutSection from '../components/AboutSection'
+import ServicesSection from '../components/ServicesSection'
+import FaqSection from '../components/FaqSection'
 // -------------Animation---------
 import { motion} from "framer-motion"
-import { pageAnimation } from '../../animation'
+import { pageAnimation} from '../animation'
+import ScrollTop from '../components/ScrollTop'
 function AboutUs() {
   return (
     <motion.div variants={pageAnimation} initial='hidden' animate='show' exit='exit'>
+      <ScrollTop />
       <AboutSection />
       <ServicesSection />
       <FaqSection />

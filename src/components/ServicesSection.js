@@ -5,10 +5,13 @@ import teamwork from '../img/teamwork.svg'
 import diaphragm from '../img/diaphragm.svg'
 import home2 from '../img/home2.png'
 import styled from 'styled-components'
-
+import {useScroll} from './useScroll'
+import { motion } from 'framer-motion'
+import { scrollReveal } from '../animation'
 const ServicesSection = () => {
+  const [element, controls] = useScroll()
   return (
-    <Container>
+    <Container variants={scrollReveal} initial='hidden' animate={controls} ref={element} >
       <div className="left-side">
         <Description>
           <h2>
@@ -53,7 +56,7 @@ const ServicesSection = () => {
     </Container>
   )
 }
-const Container = styled.div`
+const Container = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -65,6 +68,12 @@ const Container = styled.div`
     width: 60%;
     align-items: center;
   }
+  @media (max-width: 1070px){
+    flex-direction: column;
+     .left-side{
+       width: 90%;
+     }
+   }
 `
 const Description = styled.div`
   width: 80%;
@@ -87,7 +96,13 @@ const Cards = styled.div`
   flex-wrap: wrap;
   .card {
     width: 50%;
+    border: skyblue solid;
+    padding: 1rem 0;
+    padding-left: 1rem;
   }
+  @media (max-width: 650px){
+     font-size: 90%;
+   }
 `
 const Image = styled.div`
   border: 4px solid cyan;
@@ -95,6 +110,11 @@ const Image = styled.div`
   img {
     width: 100%;
     height: 94vh;
+    object-fit: cover;
   }
+  @media (max-width: 1070px){
+    width: 90%;
+   }
+ 
 `
 export default ServicesSection
